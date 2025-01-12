@@ -1,4 +1,7 @@
 package com.example.readingdiary.list
 
-class BookListFragment {
+import androidx.fragment.app.Fragment
+import com.example.readingdiary.R
+
+class BookListFragment : Fragment(R.layout.fragment_book_list) {
 }
