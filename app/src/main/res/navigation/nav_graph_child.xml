@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_child"
-    app:startDestination="@id/bookSearchListFragment2">
+    app:startDestination="@id/bookSearchListFragment">
 
     <fragment
-        android:id="@+id/bookSearchListFragment2"
+        android:id="@+id/bookSearchListFragment"
         android:name="com.example.readingdiary.lists.BookSearchListFragment"
-        android:label="BookSearchListFragment" />
+        android:label="BookSearchListFragment"
+        tools:layout="@layout/fragment_book_search">
+        <action
+            android:id="@+id/action_bookSearchListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/readListFragment2"
+        android:id="@+id/readListFragment"
         android:name="com.example.readingdiary.lists.ReadListFragment"
-        android:label="ReadListFragment" />
+        android:label="ReadListFragment"
+        tools:layout="@layout/fragment_read_books">
+        <action
+            android:id="@+id/action_readListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/wishListFragment2"
+        android:id="@+id/wishListFragment"
         android:name="com.example.readingdiary.lists.WishListFragment"
-        android:label="WishListFragment" />
+        android:label="WishListFragment"
+        tools:layout="@layout/fragment_wishlist">
+        <action
+            android:id="@+id/action_wishListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.readingdiary.detail.BookDetailsFragment"
+        android:label="fragment_book_details"
+        tools:layout="@layout/fragment_book_details" >
+        <argument
+            android:name="book"
+            app:argType="com.example.readingdiary.Book" />
+    </fragment>
+
 </navigation>

@@ -1,10 +1,11 @@
 package com.example.readingdiary
+import java.io.Serializable
 
 class Book(
     var bookTitle: String,
     var bookAuthor: String,
     var bookDescription: String
-) : java.io.Serializable
+) : Serializable
 
 fun createBooks(bookCount: Int) =
     (1..bookCount).map { index ->

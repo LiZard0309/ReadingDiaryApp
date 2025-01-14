@@ -41,9 +41,9 @@ class OverviewFragment : Fragment() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> childNavController.navigate(R.id.bookSearchListFragment2)
-                    1 -> childNavController.navigate(R.id.readListFragment2)
-                    2 -> childNavController.navigate(R.id.wishListFragment2)
+                    0 -> childNavController.navigate(R.id.bookSearchListFragment)
+                    1 -> childNavController.navigate(R.id.readListFragment)
+                    2 -> childNavController.navigate(R.id.wishListFragment)
                 }
             }
 

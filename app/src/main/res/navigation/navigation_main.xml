@@ -11,31 +11,14 @@
         android:label="fragment_overview"
         tools:layout="@layout/fragment_overview" >
         <action
-            android:id="@+id/action_overviewFragment_to_bookSearchListFragment"
-            app:destination="@id/bookSearchListFragment" />
-        <action
-            android:id="@+id/action_overviewFragment_to_readListFragment"
-            app:destination="@id/readListFragment" />
-        <action
-            android:id="@+id/action_overviewFragment_to_wishListFragment"
-            app:destination="@id/wishListFragment" />
+            android:id="@+id/action_overviewFragment_to_childGraph"
+            app:destination="@id/nav_graph_child" />
     </fragment>
 
-    <fragment
-        android:id="@+id/bookDetailsFragment"
-        android:name="com.example.readingdiary.detail.BookDetailsFragment"
-        android:label="fragment_book_details"
-        tools:layout="@layout/fragment_book_details" />
-    <fragment
-        android:id="@+id/bookSearchListFragment"
-        android:name="com.example.readingdiary.lists.BookSearchListFragment"
-        android:label="BookSearchListFragment" />
-    <fragment
-        android:id="@+id/readListFragment"
-        android:name="com.example.readingdiary.lists.ReadListFragment"
-        android:label="ReadListFragment" />
-    <fragment
-        android:id="@+id/wishListFragment"
-        android:name="com.example.readingdiary.lists.WishListFragment"
-        android:label="WishListFragment" />
+    <navigation
+        android:id="@+id/nav_graph_child"
+        app:startDestination="@id/bookSearchListFragment"
+        app:navGraph="@navigation/nav_graph_child"/>
+
+
 </navigation>
