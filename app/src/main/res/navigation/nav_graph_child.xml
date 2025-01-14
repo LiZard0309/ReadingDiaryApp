@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_child"
+    app:startDestination="@id/bookSearchListFragment2">
+
+    <fragment
+        android:id="@+id/bookSearchListFragment2"
+        android:name="com.example.readingdiary.lists.BookSearchListFragment"
+        android:label="BookSearchListFragment" />
+    <fragment
+        android:id="@+id/readListFragment2"
+        android:name="com.example.readingdiary.lists.ReadListFragment"
+        android:label="ReadListFragment" />
+    <fragment
+        android:id="@+id/wishListFragment2"
+        android:name="com.example.readingdiary.lists.WishListFragment"
+        android:label="WishListFragment" />
+</navigation>

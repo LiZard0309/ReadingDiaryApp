@@ -20,36 +20,22 @@
             android:id="@+id/action_overviewFragment_to_wishListFragment"
             app:destination="@id/wishListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/bookSearchListFragment"
-        android:name="com.example.readingdiary.lists.BookSearchListFragment"
-        android:label="fragment_item_list"
-        tools:layout="@layout/fragment_book_search" >
-        <action
-            android:id="@+id/action_bookSearchListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/readListFragment"
-        android:name="com.example.readingdiary.lists.ReadListFragment"
-        android:label="fragment_item_list2"
-        tools:layout="@layout/fragment_read_books" >
-        <action
-            android:id="@+id/action_readListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/wishListFragment"
-        android:name="com.example.readingdiary.lists.WishListFragment"
-        android:label="fragment_item_list3"
-        tools:layout="@layout/fragment_wishlist" >
-        <action
-            android:id="@+id/action_wishListFragment_to_bookDetailsFragment"
-            app:destination="@id/bookDetailsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/bookDetailsFragment"
         android:name="com.example.readingdiary.detail.BookDetailsFragment"
         android:label="fragment_book_details"
         tools:layout="@layout/fragment_book_details" />
+    <fragment
+        android:id="@+id/bookSearchListFragment"
+        android:name="com.example.readingdiary.lists.BookSearchListFragment"
+        android:label="BookSearchListFragment" />
+    <fragment
+        android:id="@+id/readListFragment"
+        android:name="com.example.readingdiary.lists.ReadListFragment"
+        android:label="ReadListFragment" />
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.example.readingdiary.lists.WishListFragment"
+        android:label="WishListFragment" />
 </navigation>

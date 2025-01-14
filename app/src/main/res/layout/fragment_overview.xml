@@ -23,29 +23,15 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/book_search" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/read_books" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wish_list" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:id="@+id/childNavHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_child"/>
 
 
 </LinearLayout>
