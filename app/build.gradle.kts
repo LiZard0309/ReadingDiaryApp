@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 apply(plugin = "kotlinx-serialization")
@@ -60,5 +61,8 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.kotlinx.coroutines.android)
-
+    implementation(libs.androidx.room.runtime.v250)
+    kapt(libs.room.compiler)
+    implementation (libs.androidx.lifecycle.livedata.ktx.v260)
 }
+

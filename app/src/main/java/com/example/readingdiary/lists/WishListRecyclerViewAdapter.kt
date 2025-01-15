@@ -2,6 +2,7 @@ package com.example.readingdiary.lists
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.readingdiary.Book

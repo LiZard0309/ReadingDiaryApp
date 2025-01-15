@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.readingdiary.repository.repository
 
 class WishListViewModel(): ViewModel() {
-    fun readAll() = repository.readAllWishListBooks()
+    val wishListBooks = repository.wishListBooks
 
-    fun refreshTriggered() {
-        repository.loadNewWishList()
-    }
+    fun readAll() = repository.readAllWishListBooks()
 }

@@ -36,6 +36,7 @@ class BookSearchListFragment : Fragment(R.layout.fragment_book_search) {
 
         bookSearchViewModel.books.observe(viewLifecycleOwner) { books ->
             adapter.books = ArrayList(books)
+            //new List is assigned to the adapter's book property
             adapter.notifyDataSetChanged()
         }
 

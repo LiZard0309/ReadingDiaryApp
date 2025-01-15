@@ -1,5 +1,7 @@
 package com.example.readingdiary.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.readingdiary.Book
 import com.example.readingdiary.BookData
 import com.example.readingdiary.api.ApiAccess
@@ -17,31 +19,33 @@ var repository = BookRepository()
 class BookRepository(
     val httpClient: HttpClient = ApiAccess().createHttpClient()
 ) {
-    private var readBooks = BookData.booksReadList
 
+    private val _readBooks = MutableLiveData<ArrayList<Book>>(ArrayList())
+    val readBooks: LiveData<ArrayList<Book>> get() = _readBooks
 
-    //Zeile wird dann aufgerufen, wenn der Konstruktor aufgerufen wird, daher werden die Bücher nicht doppelt gezeigt
-    //Variable darf nicht null sein
-    private var wishListBooks = BookData.booksOnWishList
+    private val _wishListBooks = MutableLiveData<ArrayList<Book>>(ArrayList())
+    val wishListBooks: LiveData<ArrayList<Book>> get() = _wishListBooks
 
-    fun readAllReadBooks(): MutableList<Book> {
+    fun readAllReadBooks(): LiveData<ArrayList<Book>> {
         return readBooks
     }
 
-    fun readAllWishListBooks(): MutableList<Book> {
+    fun readAllWishListBooks(): LiveData<ArrayList<Book>> {
         return wishListBooks
     }
 
-    fun loadNewReadList() {
-        //in dem Moment, wo Load-Methode gerufen wird, wird diese Liste erzeugt
-        val newReadList = readBooks + wishListBooks
-        readBooks = newReadList as ArrayList<Book>
+    fun addToReadList(book: Book) {
+        val currentReadList = _readBooks.value ?: ArrayList()
+        currentReadList.add(book)
+        _readBooks.value = currentReadList
     }
 
-    fun loadNewWishList() {
-        val newWishList = wishListBooks + readBooks
-        wishListBooks = newWishList as ArrayList<Book>
+    fun addToWishList(book: Book) {
+        val currentWishList = _wishListBooks.value ?: ArrayList()
+        currentWishList.add(book)
+        _readBooks.value = currentWishList
     }
+
 
 
     suspend fun searchBooks(searchTerm: String): List<Book> {

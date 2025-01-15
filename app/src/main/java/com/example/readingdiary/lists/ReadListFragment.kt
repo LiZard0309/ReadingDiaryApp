@@ -8,6 +8,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.readingdiary.BookData
 import com.example.readingdiary.R
 
 class ReadListFragment : Fragment(R.layout.fragment_read_books) {
@@ -16,6 +17,7 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
     private lateinit var refresher: SwipeRefreshLayout
 
     private val readListViewModel: ReadListViewModel by viewModels()
+    private lateinit var adapter: ReadListRecyclerViewAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,6 +26,11 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
         refresher = view.findViewById(R.id.swipeRefresherReadList)
 
         setupBooksReadList()
+
+        readListViewModel.readListBooks.observe(viewLifecycleOwner) { books ->
+            adapter.books = books
+            adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onResume() {
@@ -33,7 +40,7 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
 
     private fun setupBooksReadList(){
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        val adapter = ReadListRecyclerViewAdapter(readListViewModel.readAll())
+        adapter = ReadListRecyclerViewAdapter(BookData.booksReadList)
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
 
         recyclerView.addItemDecoration(dividerItemDecoration)
@@ -41,7 +48,6 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
         recyclerView.adapter = adapter
 
         refresher.setOnRefreshListener {
-            readListViewModel.refreshTriggered()
             refresher.isRefreshing = false
         }
 
