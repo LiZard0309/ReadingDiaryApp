@@ -8,7 +8,7 @@ import com.example.readingdiary.Book
 import com.example.readingdiary.R
 
 
-class ReadListRecyclerViewAdapter(var books: ArrayList<Book>) : RecyclerView.Adapter<BookViewHolder>() {
+class ReadListRecyclerViewAdapter(var books: List<Book>) : RecyclerView.Adapter<BookViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItemContactRootView =
