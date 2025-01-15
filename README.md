@@ -11,4 +11,5 @@ Block 3: API Access and Serialization with ktor, access to Google Books API for 
 
 Block 4: Concurrency with Coroutines: the book search/api call is made on another thread
 
-Some blocks are only implemented in part. I implemented the parts that made sense in the context of my app. 
+Some blocks are only implemented in part. I implemented the parts that made sense in the context of my app.
+

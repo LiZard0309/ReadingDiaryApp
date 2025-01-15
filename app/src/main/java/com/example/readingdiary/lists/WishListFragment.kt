@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.readingdiary.Book
 import com.example.readingdiary.BookData
 import com.example.readingdiary.R
+import com.example.readingdiary.repository.repository
 
 class WishListFragment : Fragment(R.layout.fragment_wishlist) {
     private lateinit var recyclerView: RecyclerView
@@ -30,8 +31,7 @@ class WishListFragment : Fragment(R.layout.fragment_wishlist) {
         setupBooksWishList()
 
         wishListViewModel.wishListBooks.observe(viewLifecycleOwner) { books ->
-            adapter.books = books
-            adapter.notifyDataSetChanged()
+            updateBookListAfterChange(books)
         }
     }
 
@@ -40,9 +40,13 @@ class WishListFragment : Fragment(R.layout.fragment_wishlist) {
         setupBooksWishList()
     }
 
+    private fun updateBookListAfterChange(newBookList: List<Book>) {
+        adapter.updateWishList(newBookList)
+    }
+
     private fun setupBooksWishList(){
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        adapter = WishListRecyclerViewAdapter(BookData.booksOnWishList)
+        adapter = WishListRecyclerViewAdapter(repository.wishListBooks.value!!)
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
 
         recyclerView.addItemDecoration(dividerItemDecoration)

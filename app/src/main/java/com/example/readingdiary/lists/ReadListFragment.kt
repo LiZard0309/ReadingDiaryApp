@@ -8,8 +8,10 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.readingdiary.Book
 import com.example.readingdiary.BookData
 import com.example.readingdiary.R
+import com.example.readingdiary.repository.repository
 
 class ReadListFragment : Fragment(R.layout.fragment_read_books) {
 
@@ -28,8 +30,7 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
         setupBooksReadList()
 
         readListViewModel.readListBooks.observe(viewLifecycleOwner) { books ->
-            adapter.books = books
-            adapter.notifyDataSetChanged()
+            updateBookListfterChange(books)
         }
     }
 
@@ -40,7 +41,7 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
 
     private fun setupBooksReadList(){
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        adapter = ReadListRecyclerViewAdapter(BookData.booksReadList)
+        adapter = ReadListRecyclerViewAdapter(repository.readBooks.value!!)
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
 
         recyclerView.addItemDecoration(dividerItemDecoration)
@@ -50,6 +51,10 @@ class ReadListFragment : Fragment(R.layout.fragment_read_books) {
         refresher.setOnRefreshListener {
             refresher.isRefreshing = false
         }
+
+    }
+    fun updateBookListfterChange(newBookList: List<Book>) {
+        adapter.updateReadList(newBookList)
 
     }
 }

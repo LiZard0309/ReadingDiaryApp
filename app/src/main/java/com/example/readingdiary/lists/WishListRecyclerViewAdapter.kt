@@ -31,4 +31,10 @@ class WishListRecyclerViewAdapter(var books: List<Book>) : RecyclerView.Adapter<
         }
 
     }
+
+    fun updateWishList(newBookList: List<Book>) {
+        this.books = newBookList
+        notifyDataSetChanged()
+    }
+
 }

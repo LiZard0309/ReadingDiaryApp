@@ -30,4 +30,9 @@ class ReadListRecyclerViewAdapter(var books: List<Book>) : RecyclerView.Adapter<
         }
 
     }
+
+    fun updateReadList(newBookList: List<Book>) {
+        this.books = newBookList
+        notifyDataSetChanged()
+    }
 }
