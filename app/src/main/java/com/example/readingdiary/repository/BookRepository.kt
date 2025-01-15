@@ -7,6 +7,10 @@ import com.example.readingdiary.api.GoogleBooksResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 var repository = BookRepository()
 
@@ -42,8 +46,10 @@ class BookRepository(
 
     suspend fun searchBooks(searchTerm: String): List<Book> {
         return try {
-            val apiBookList: GoogleBooksResponse =
+            val apiBookList: GoogleBooksResponse = withContext(Dispatchers.IO) {
+                launch { delay(3000) }
                 httpClient.get("https://www.googleapis.com/books/v1/volumes?q=$searchTerm").body()
+            }
 
 
             apiBookList.items?.map { volume ->
