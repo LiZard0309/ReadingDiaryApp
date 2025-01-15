@@ -1,10 +1,21 @@
 package com.example.readingdiary.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ApiBook(
-    val bookTitle: String,
-    val bookAuthor: String,
-    val bookDescription: String
+data class GoogleBooksResponse(
+    val items: List<Volume>?
+)
+
+@Serializable
+data class Volume(
+    val volumeInfo: VolumeInfo
+)
+
+@Serializable
+data class VolumeInfo(
+    @SerialName("title") val bookTitle: String,
+    @SerialName("authors") val bookAuthors: List<String>? = null,
+    val description: String? = null
 )

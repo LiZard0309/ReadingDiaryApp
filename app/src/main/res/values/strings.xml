@@ -10,4 +10,5 @@
     <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="add_to_read_list">Add to Read List</string>
     <string name="go_back">Go back</string>
+    <string name="search_for_a_book">Search for a book</string>
 </resources>
