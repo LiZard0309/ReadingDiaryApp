@@ -20,10 +20,10 @@ class BookRepository(
     val httpClient: HttpClient = ApiAccess().createHttpClient()
 ) {
 
-    private val _readBooks = MutableLiveData<ArrayList<Book>>(ArrayList())
+    private val _readBooks = MutableLiveData<ArrayList<Book>>(ArrayList(BookData.booksReadList))
     val readBooks: LiveData<ArrayList<Book>> get() = _readBooks
 
-    private val _wishListBooks = MutableLiveData<ArrayList<Book>>(ArrayList())
+    private val _wishListBooks = MutableLiveData<ArrayList<Book>>(ArrayList(BookData.booksOnWishList))
     val wishListBooks: LiveData<ArrayList<Book>> get() = _wishListBooks
 
     fun readAllReadBooks(): LiveData<ArrayList<Book>> {
